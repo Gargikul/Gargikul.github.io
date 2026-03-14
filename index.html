@@ -184,13 +184,45 @@ nav{position:fixed;top:0;width:100%;background:rgba(240,244,255,0.92);backdrop-f
 
 footer{text-align:center;padding:1.8rem;font-size:.72rem;color:var(--ink4);font-family:'JetBrains Mono',monospace;border-top:1px solid var(--border2);}
 
-@media(max-width:960px){
+@media(max-width:768px){
+  /* HERO */
+  #hero{padding:5rem 1.5rem 3rem;}
+  .hero-inner{flex-direction:column;gap:2rem;}
+  .hero-card{width:100%;}
+  .hero-photo{width:120px;height:120px;}
+  .hero-name{font-size:2.2rem;}
+
+  /* NAV */
   nav{padding:0 1.5rem;}
-  #hero,.sec-inner,.terminal-wrap{padding-left:1.5rem;padding-right:1.5rem;}
-  .hero-inner,.about-layout,.exp-layout,.contact-grid{grid-template-columns:1fr;}
-  .proj-grid,.edu-grid{grid-template-columns:1fr;}
-  .exp-nav{flex-direction:row;flex-wrap:wrap;}
-  .etab{font-size:.75rem;}
+  .nav-status{display:none;}
+  .nav-links{gap:.5rem;}
+  .nav-links a{font-size:.72rem;padding:.3rem .6rem;}
+
+  /* SECTIONS */
+  .sec-inner{padding:3rem 1.5rem;}
+  .terminal-wrap{padding:2rem 1.5rem;}
+
+  /* ABOUT */
+  .about-layout{grid-template-columns:1fr;}
+
+  /* EXPERIENCE */
+  .exp-layout{grid-template-columns:1fr;}
+  .exp-nav{flex-direction:row;flex-wrap:wrap;gap:.25rem;}
+  .etab{font-size:.72rem;padding:.4rem .7rem;}
+
+  /* PROJECTS */
+  .proj-grid{grid-template-columns:1fr;}
+  .proj-filter{flex-wrap:wrap;}
+
+  /* EDUCATION */
+  .edu-grid{grid-template-columns:1fr;}
+
+  /* CONTACT */
+  .contact-grid{grid-template-columns:1fr;gap:2rem;}
+  .contact-card{width:100%;}
+
+  /* FOOTER */
+  footer{font-size:.65rem;}
 }
 </style>
 </head>
