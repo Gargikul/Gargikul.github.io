@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Portfolio | Data Analyst</title>
+<style>
+  :root {
+    --navy: #0a192f;
+    --teal: #64ffda;
+    --teal-dim: rgba(100,255,218,0.1);
+    --slate: #8892b0;
+    --light: #ccd6f6;
+    --white: #e6f1ff;
+    --card: #112240;
+    --card2: #1d3461;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--slate);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(10,25,47,0.92);backdrop-filter:blur(8px);z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(100,255,218,0.08);}
+  .nav-logo{color:var(--teal);font-weight:700;font-size:1.1rem;letter-spacing:1px;}
+  .nav-links{display:flex;gap:1.8rem;list-style:none;}
+  .nav-links a{color:var(--slate);text-decoration:none;font-size:.9rem;transition:.2s;}
+  .nav-links a:hover{color:var(--teal);}
+
+  /* HERO */
+  #hero{min-height:100vh;display:flex;align-items:center;padding:0 10vw;padding-top:5rem;}
+  .hero-inner{max-width:700px;}
+  .hero-tag{color:var(--teal);font-size:.95rem;letter-spacing:2px;margin-bottom:.8rem;}
+  .hero-name{color:var(--white);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.1;}
+  .hero-sub{color:var(--light);font-size:clamp(1.2rem,3vw,2rem);font-weight:400;margin:.4rem 0 1.2rem;}
+  .hero-desc{color:var(--slate);font-size:1rem;max-width:520px;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{padding:.75rem 1.6rem;border-radius:4px;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;}
+  .btn-primary{background:transparent;border:1px solid var(--teal);color:var(--teal);}
+  .btn-primary:hover{background:var(--teal-dim);}
+  .btn-secondary{background:var(--teal);color:var(--navy);}
+  .btn-secondary:hover{opacity:.85;}
+
+  /* SECTIONS */
+  section{padding:6rem 10vw;}
+  .section-label{color:var(--teal);font-size:.85rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.4rem;}
+  .section-title{color:var(--white);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;margin-bottom:2.5rem;position:relative;}
+  .section-title::after{content:'';display:block;width:60px;height:2px;background:var(--teal);margin-top:.5rem;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+  .about-text p{margin-bottom:1rem;font-size:.97rem;}
+  .about-text span{color:var(--teal);}
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+  .skill-item{display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--light);}
+  .skill-item::before{content:'▹';color:var(--teal);font-size:.8rem;}
+
+  /* EXPERIENCE */
+  .exp-tabs{display:flex;gap:0;border-left:2px solid rgba(100,255,218,0.2);margin-bottom:2rem;}
+  .tab-btn{padding:.75rem 1.4rem;background:none;border:none;color:var(--slate);cursor:pointer;font-size:.88rem;transition:.2s;white-space:nowrap;}
+  .tab-btn.active,.tab-btn:hover{color:var(--teal);background:var(--teal-dim);}
+  .tab-btn.active{border-left:2px solid var(--teal);margin-left:-2px;}
+  .exp-panel{display:none;}
+  .exp-panel.active{display:block;}
+  .exp-panel h3{color:var(--white);font-size:1.1rem;}
+  .exp-panel h3 span{color:var(--teal);}
+  .exp-panel .period{font-size:.83rem;color:var(--slate);margin:.3rem 0 1rem;}
+  .exp-panel ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+  .exp-panel li{display:flex;gap:.7rem;font-size:.92rem;}
+  .exp-panel li::before{content:'▹';color:var(--teal);flex-shrink:0;margin-top:2px;}
+  .exp-panel li b{color:var(--light);}
+
+  /* PROJECTS */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;}
+  .project-card{background:var(--card);border-radius:8px;padding:1.8rem;border:1px solid rgba(100,255,218,0.06);transition:.25s;position:relative;overflow:hidden;}
+  .project-card:hover{transform:translateY(-4px);border-color:rgba(100,255,218,0.25);box-shadow:0 10px 30px rgba(0,0,0,0.3);}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+  .proj-icon{font-size:2rem;}
+  .proj-links a{color:var(--slate);font-size:1.1rem;margin-left:.6rem;text-decoration:none;transition:.2s;}
+  .proj-links a:hover{color:var(--teal);}
+  .project-card h3{color:var(--white);font-size:1rem;font-weight:600;margin-bottom:.6rem;}
+  .project-card p{font-size:.87rem;line-height:1.6;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem;}
+  .tag{background:var(--teal-dim);color:var(--teal);font-size:.75rem;padding:.2rem .6rem;border-radius:3px;font-family:monospace;}
+
+  /* EDUCATION */
+  .edu-cards{display:flex;flex-direction:column;gap:1.2rem;}
+  .edu-card{background:var(--card);border-radius:8px;padding:1.5rem 2rem;border-left:3px solid var(--teal);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;}
+  .edu-card h3{color:var(--white);font-size:1rem;font-weight:600;}
+  .edu-card p{font-size:.87rem;margin-top:.2rem;}
+  .edu-card .badge{background:var(--teal-dim);color:var(--teal);padding:.2rem .7rem;border-radius:20px;font-size:.78rem;white-space:nowrap;}
+
+  /* CONTACT */
+  #contact{text-align:center;}
+  .contact-inner{max-width:520px;margin:0 auto;}
+  .contact-inner p{margin-bottom:2rem;font-size:.97rem;}
+  .social-links{display:flex;justify-content:center;gap:2rem;margin-top:2rem;}
+  .social-links a{color:var(--slate);font-size:.9rem;text-decoration:none;transition:.2s;}
+  .social-links a:hover{color:var(--teal);}
+
+  /* FOOTER */
+  footer{text-align:center;padding:2rem;font-size:.8rem;color:rgba(136,146,176,.5);}
+
+  @media(max-width:768px){
+    .about-grid{grid-template-columns:1fr;}
+    .exp-tabs{flex-direction:row;overflow-x:auto;border-left:none;border-bottom:2px solid rgba(100,255,218,.2);}
+    .tab-btn.active{border-left:none;border-bottom:2px solid var(--teal);margin-left:0;margin-bottom:-2px;}
+    nav{padding:.8rem 1.2rem;}
+    section{padding:4rem 6vw;}
+    #hero{padding:0 6vw;padding-top:5rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">&lt;YourName /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">👋 Hi, my name is</p>
+    <h1 class="hero-name">Your Name.</h1>
+    <h2 class="hero-sub">I turn data into decisions.</h2>
+    <p class="hero-desc">
+      Data Analyst with 4.5+ years of software engineering experience and an M.S. in Data Analytics Engineering from Northeastern University. I specialize in SQL, Python, and Tableau — with proven impact in healthcare and enterprise operations.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">01.</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a software engineer turned data analyst, currently completing my <span>M.S. in Data Analytics Engineering at Northeastern University</span> (GPA: 3.78, May 2026). My engineering background gives me an edge — I don't just analyze data, I understand how it's built, stored, and moved.</p>
+      <p>Most recently, I interned as a <span>BI Analyst at Dana-Farber Cancer Institute</span>, where I analyzed 27,000+ patient lab records and built Tableau dashboards supporting pharmacy operations and clinical quality initiatives.</p>
+      <p>Before that, I spent 4.5 years at <span>Mogililabs</span>, a $2.6B SaaS unicorn, driving $1M+ in revenue impact through data-driven process automation and analytics.</p>
+      <p>I'm actively seeking <span>full-time Data Analyst roles</span> in Boston or remotely, starting May 2026.</p>
+    </div>
+    <div>
+      <p style="color:var(--white);margin-bottom:1rem;font-size:.95rem;">Technologies I work with:</p>
+      <div class="skills-grid">
+        <div class="skill-item">SQL (Window Functions)</div>
+        <div class="skill-item">Python (Pandas, NumPy)</div>
+        <div class="skill-item">Tableau</div>
+        <div class="skill-item">Power BI</div>
+        <div class="skill-item">Snowflake</div>
+        <div class="skill-item">AWS S3</div>
+        <div class="skill-item">MySQL</div>
+        <div class="skill-item">GitHub</div>
+        <div class="skill-item">Flask</div>
+        <div class="skill-item">Google Colab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">02.</p>
+  <h2 class="section-title">Where I've Worked</h2>
+  <div class="exp-tabs">
+    <button class="tab-btn active" onclick="showTab(0)">Dana-Farber</button>
+    <button class="tab-btn" onclick="showTab(1)">Mogililabs</button>
+    <button class="tab-btn" onclick="showTab(2)">Zooks</button>
+  </div>
+
+  <div class="exp-panel active" id="tab0">
+    <h3>BI Analyst Intern <span>@ Dana-Farber Cancer Institute</span></h3>
+    <p class="period">July 2025 – Dec 2025 · Boston, MA</p>
+    <ul>
+      <li>Analyzed <b>27,000+ historical patient lab records</b> to identify critical gaps in Hepatitis B screening before immunosuppressive cancer treatment</li>
+      <li>Built <b>Tableau dashboards and analytical reports</b> supporting pharmacy operations and quality improvement initiatives</li>
+      <li>Collaborated with cross-functional clinical teams to deliver <b>clear, actionable data narratives</b> to non-technical stakeholders</li>
+    </ul>
+  </div>
+
+  <div class="exp-panel" id="tab1">
+    <h3>Senior Software Engineer | Data Analytics <span>@ Mogililabs India Pvt. Ltd.</span></h3>
+    <p class="period">June 2019 – Nov 2023 · India &nbsp;|&nbsp; $2.6B B2B SaaS Unicorn</p>
+    <ul>
+      <li>Redesigned the customer returns workflow into a 2-step solution, generating <b>$1M+ in incremental revenue</b> and improving inventory control</li>
+      <li>Led data analysis and requirements documentation for a finance reporting system serving <b>$1B+ accounts</b></li>
+      <li>Built <b>automated Python data pipelines</b> for large-scale transactional datasets enabling historical analysis and back-testing</li>
+      <li>Automated supplier payment workflows using <b>Python Flask</b>, handling <b>$100K+ in monthly transactions</b> accurately and on time</li>
+    </ul>
+  </div>
+
+  <div class="exp-panel" id="tab2">
+    <h3>Analyst <span>@ Zooks India Pvt. Ltd.</span></h3>
+    <p class="period">Oct 2018 – April 2019 · India</p>
+    <ul>
+      <li>Defined KPIs with operations leadership and drove continuous improvement projects that boosted efficiency by <b>12%</b></li>
+      <li>Managed end-to-end supply chain data and led <b>A/B testing cycles</b> as Scrum Master to accelerate cross-functional iteration</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">03.</p>
+  <h2 class="section-title">Things I've Built</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-icon">🚑</div>
+        <div class="proj-links">
+          <a href="#" title="GitHub">⬡ GitHub</a>
+          <a href="#" title="Demo">↗ Demo</a>
+        </div>
+      </div>
+      <h3>Predictive Data Mining for Ambulance Allocation</h3>
+      <p>Applied predictive forecasting and computer vision to optimize ambulance deployment based on traffic patterns, response times, and geographical accident data — improving emergency response efficiency.</p>
+      <div class="proj-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Predictive Modeling</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Data Mining</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-icon">🏠</div>
+        <div class="proj-links">
+          <a href="#" title="GitHub">⬡ GitHub</a>
+          <a href="#" title="Demo">↗ Demo</a>
+        </div>
+      </div>
+      <h3>WFH vs. Back-to-Office Analysis</h3>
+      <p>Comprehensive post-COVID analysis using data storytelling to highlight industry-wise WFH adoption rates, commute time savings, and productivity factors across regions — visualized with BI tools.</p>
+      <div class="proj-tags">
+        <span class="tag">Tableau</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Data Storytelling</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="proj-top">
+        <div class="proj-icon">🏥</div>
+        <div class="proj-links"></div>
+      </div>
+      <h3>HBV Screening Gap Analysis — Dana-Farber</h3>
+      <p>Analyzed 27,000+ patient lab records to identify gaps in Hepatitis B screening protocols for immunosuppressed cancer patients, surfacing insights that directly informed clinical quality decisions.</p>
+      <div class="proj-tags">
+        <span class="tag">SQL</span>
+        <span class="tag">Tableau</span>
+        <span class="tag">Healthcare Analytics</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">04.</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-cards">
+    <div class="edu-card">
+      <div>
+        <h3>Northeastern University</h3>
+        <p>M.S. in Data Analytics Engineering &nbsp;·&nbsp; GPA: 3.78</p>
+        <p style="font-size:.82rem;margin-top:.4rem;color:var(--slate);">Data Mining · ML Operations · Applied GenAI · Computation & Data Visualization</p>
+      </div>
+      <span class="badge">Expected May 2026</span>
+    </div>
+    <div class="edu-card">
+      <div>
+        <h3>Dr. B.R. Ambedkar National Institute of Technology</h3>
+        <p>Bachelor of Science</p>
+      </div>
+      <span class="badge">Completed</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">05.</p>
+  <h2 class="section-title" style="text-align:center;margin-bottom:.5rem;">Get In Touch</h2>
+  <div class="contact-inner">
+    <p>I'm actively seeking <strong style="color:var(--teal)">full-time Data Analyst roles</strong> starting May 2026. Whether you have a position in mind or just want to connect — my inbox is open!</p>
+    <a href="mailto:youremail@email.com" class="btn btn-primary" style="display:inline-block;">Say Hello ✉</a>
+    <div class="social-links">
+      <a href="#">LinkedIn ↗</a>
+      <a href="#">GitHub ↗</a>
+      <a href="#">Resume ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>Designed & Built by Your Name · 2026</footer>
+
+<script>
+  function showTab(i) {
+    document.querySelectorAll('.exp-panel').forEach((p,idx) => {
+      p.classList.toggle('active', idx === i);
+    });
+    document.querySelectorAll('.tab-btn').forEach((b,idx) => {
+      b.classList.toggle('active', idx === i);
+    });
+  }
+</script>
+</body>
+</html>
