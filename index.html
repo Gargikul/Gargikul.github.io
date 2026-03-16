@@ -103,8 +103,8 @@ nav{position:fixed;top:0;width:100%;background:rgba(240,244,255,0.92);backdrop-f
 .exp-role{font-size:1.15rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:.2rem;}
 .exp-when{font-size:.78rem;color:var(--ink4);margin-bottom:.5rem;}
 .exp-badge{display:inline-flex;align-items:center;gap:.35rem;background:var(--accent-light);color:var(--accent);font-size:.7rem;font-weight:600;padding:.25rem .75rem;border-radius:20px;margin-bottom:1.5rem;border:1px solid var(--accent-mid);}
-.exp-panel ul{list-style:none;display:flex;flex-direction:column;gap:.65rem;}
-.exp-panel li{display:flex;gap:.75rem;font-size:.9rem;color:var(--ink3);line-height:1.7;}
+.exp-panel ul{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
+.exp-panel li{display:flex;gap:.75rem;font-size:.9rem;color:var(--ink3);line-height:1.5;}
 .exp-panel li::before{content:'→';color:var(--accent);flex-shrink:0;font-weight:600;}
 .exp-panel li strong{color:var(--ink);font-weight:600;}
 
@@ -187,7 +187,7 @@ footer{text-align:center;padding:1.8rem;font-size:.72rem;color:var(--ink4);font-
   .nav-links a{font-size:.72rem;padding:.3rem .6rem;}
 
   /* SECTIONS */
-  .sec-inner{padding:3rem 1.5rem;}
+  .sec-inner{padding:3.5rem 4rem;}
   .terminal-wrap{padding:2rem 1.5rem;}
 
   /* ABOUT */
@@ -354,7 +354,6 @@ footer{text-align:center;padding:1.8rem;font-size:.72rem;color:var(--ink4);font-
       <button class="fbtn active" onclick="filterProj('all',this)">All</button>
       <button class="fbtn" onclick="filterProj('ml',this)">ML / AI</button>
       <button class="fbtn" onclick="filterProj('bi',this)">BI / Analytics</button>
-      <button class="fbtn" onclick="filterProj('nlp',this)">NLP</button>
     </div>
     <div class="proj-grid" id="proj-grid">
       <div class="pcard" data-cat="ml">
@@ -379,16 +378,14 @@ footer{text-align:center;padding:1.8rem;font-size:.72rem;color:var(--ink4);font-
         <p>The debate everyone had opinions on. I let the data speak. Industry-wise WFH adoption, commute savings, and productivity factors across regions.</p>
         <div class="pcard-tags"><span class="ptag">Tableau</span><span class="ptag">Power BI</span><span class="ptag">SQL</span></div>
       </div>
-      <div class="pcard" data-cat="nlp">
         <div class="pcard-top">
           <div class="pcard-icon">🐦</div>
           <div class="pcard-links"><a class="plink" href="https://github.com/Atulya1/MLOps" target="_blank">GitHub ↗</a></div>
         </div>
-        <p class="pcard-cat">NLP · MLOps</p>
+        <p class="pcard-cat">MLOps</p>
         <h3>Social Nexus: Making Sense of Twitter Chaos</h3>
         <p>End-to-end pipeline processing live tweet data from the Ukraine-Russia crisis. Elasticsearch indexing, OpenAI RAG for sentiment analysis, Airflow orchestration.</p>
         <div class="pcard-tags"><span class="ptag">Elasticsearch</span><span class="ptag">RAG</span><span class="ptag">Airflow</span><span class="ptag">NLP</span></div>
-      </div>
     </div>
   </div>
 </section>
