@@ -43,7 +43,7 @@ nav{position:fixed;top:0;width:100%;background:rgba(240,244,255,0.92);backdrop-f
 #hero{min-height:100vh;display:flex;align-items:center;padding:6rem 4rem 4rem;position:relative;overflow:hidden;}
 .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border2) 1px,transparent 1px),linear-gradient(90deg,var(--border2) 1px,transparent 1px);background-size:48px 48px;opacity:.5;}
 .hero-bg-blob{position:absolute;top:-10%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,var(--accent-light) 0%,transparent 70%);pointer-events:none;}
-.hero-photo{width:200px;height:240px;border-radius:14px;border:none;object-fit:cover;object-position:center 40%;flex-shrink:0;box-shadow:0 8px 32px rgba(37,99,235,.15);margin-bottom:1.25rem;}
+.hero-photo{width:190px;height:230px;border-radius:10px;border:none;object-fit:cover;object-position:center 35%;flex-shrink:0;box-shadow:0 4px 20px rgba(0,0,0,.12);margin-bottom:1.25rem;filter:contrast(1.05) brightness(1.02);}
 .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.5rem;border:1px solid var(--accent-mid);}
 .hero-name{font-size:clamp(2.8rem,5vw,4.2rem);font-weight:800;color:var(--ink);line-height:1.05;letter-spacing:-.03em;margin-bottom:.75rem;}
 .hero-name .highlight{color:var(--accent);}
@@ -377,6 +377,25 @@ footer{text-align:center;padding:1.8rem;font-size:.72rem;color:var(--ink4);font-
         <p>The debate everyone had opinions on. I let the data speak. Industry-wise WFH adoption, commute savings, and productivity factors across regions.</p>
         <div class="pcard-tags"><span class="ptag">Tableau</span><span class="ptag">Power BI</span><span class="ptag">SQL</span></div>
       </div>
+      <div class="pcard" data-cat="ml">
+  <div class="pcard-top">
+    <div class="pcard-icon">⚽</div>
+    <div class="pcard-links">
+      <a class="plink" href="https://github.com/Gargikul/fifa-worldcup-analyst" target="_blank">GitHub ↗</a>
+      <a class="plink" href="https://fifa-worldcup-analyst.vercel.app" target="_blank">Demo ↗</a>
+    </div>
+  </div>
+  <p class="pcard-cat">ML · RAG · LangChain</p>
+  <h3>World Cup Analyst AI</h3>
+  <p>RAG-powered chatbot covering 90+ years of FIFA World Cup history. Predicts match outcomes, surfaces player stats, and answers historical queries using LangChain agents, FAISS vector search, and OpenAI.</p>
+  <div class="pcard-tags">
+    <span class="ptag">LangChain</span>
+    <span class="ptag">FAISS</span>
+    <span class="ptag">OpenAI</span>
+    <span class="ptag">FastAPI</span>
+    <span class="ptag">Python</span>
+  </div>
+</div>
        <div class="pcard" data-cat="ml">
         <div class="pcard-top">
           <div class="pcard-icon">🐦</div>
